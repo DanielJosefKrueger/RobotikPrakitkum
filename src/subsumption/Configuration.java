@@ -20,7 +20,7 @@ public class Configuration {
 	
 	
 	public static final Integer LIGHT_NORMAL_SPEED = 250;
-	public static final Integer LIGHT_DELTA_SPEED = 150;
+	public static final Integer LIGHT_DELTA_SPEED = 200;
 	
 	public static final Integer LIGHT_THRESHOLD = 650;
 	

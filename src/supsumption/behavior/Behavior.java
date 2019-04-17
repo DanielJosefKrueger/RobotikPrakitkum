@@ -40,9 +40,14 @@ public abstract class Behavior extends Thread {
 	}
 
 	void sendWish(Wish wish) {
-		//System.out.println("sending wish: " + wish);
 		arbitrator.accept(wish, priority);
 	}
+	
+	void sendWish(Wish wish, int priority) {
+		arbitrator.accept(wish, priority);
+	}
+	
+	
 
 	// statische Factory Methode für Verhalten
 	public static Behavior make(String typeName, Arbitrator arbitrator, int priority) {
