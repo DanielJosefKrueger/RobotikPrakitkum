@@ -33,7 +33,17 @@ public class BumperSensor extends SubSensor{
 			    System.out.println("pressed1:" + pressed1 + "pressed2:" + pressed2);
 			    counter =1;
 		    }
-		    send((int)((pressed1 + pressed2)/2));
+		    
+		    
+		    
+		    if(pressed1 != 0 || pressed2 !=0) {
+		    	 float difference = pressed1- pressed2; 
+				    if(difference<0) {
+				    	send(1);
+				    }else {
+				    	send(-1);
+				    }
+		    }
 		}
 	}
 	

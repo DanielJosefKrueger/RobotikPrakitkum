@@ -14,7 +14,7 @@ public class Chassis extends Effector {
 	
 	@Override
 	public void accept(Wish command) {
-		System.out.println(command);
+		//System.out.println(command);
 		switch(command) {
 		case FORWARD:
 		case DRIVEFORWARD:
@@ -36,13 +36,37 @@ public class Chassis extends Effector {
 			break;
 		case SOFTLEFT:
 			motorRight.setSpeed(Configuration.NORMAL_SPEED);
-			motorLeft.setSpeed(Configuration.NORMAL_SPEED- Configuration.DELTA_SPEED);
+			motorLeft.setSpeed(Configuration.NORMAL_SPEED- Configuration.SOFT_DELTA_SPEED);
+			motorRight.forward();
+			motorLeft.forward();
+			break;
+		case HARDLEFT:
+			motorRight.setSpeed(Configuration.NORMAL_SPEED);
+			motorLeft.setSpeed(Configuration.NORMAL_SPEED- Configuration.HARD_DELTA_SPEED);
 			motorRight.forward();
 			motorLeft.forward();
 			break;
 		case SOFTRIGHT:
-			motorRight.setSpeed(Configuration.NORMAL_SPEED- Configuration.DELTA_SPEED);
+			motorRight.setSpeed(Configuration.NORMAL_SPEED- Configuration.SOFT_DELTA_SPEED);
 			motorLeft.setSpeed(Configuration.NORMAL_SPEED);
+			motorRight.forward();
+			motorLeft.forward();
+			break;
+		case HARDRIGHT:
+			motorRight.setSpeed(Configuration.NORMAL_SPEED- Configuration.HARD_DELTA_SPEED);
+			motorLeft.setSpeed(Configuration.NORMAL_SPEED);
+			motorRight.forward();
+			motorLeft.forward();
+			break;	
+		case LIGHTRIGHT:
+			motorRight.setSpeed(Configuration.LIGHT_NORMAL_SPEED- Configuration.LIGHT_DELTA_SPEED);
+			motorLeft.setSpeed(Configuration.LIGHT_NORMAL_SPEED);
+			motorRight.forward();
+			motorLeft.forward();
+			break;
+		case LIGHTLEFT:
+			motorRight.setSpeed(Configuration.LIGHT_NORMAL_SPEED);
+			motorLeft.setSpeed(Configuration.LIGHT_NORMAL_SPEED- Configuration.LIGHT_DELTA_SPEED);
 			motorRight.forward();
 			motorLeft.forward();
 			break;
@@ -55,6 +79,11 @@ public class Chassis extends Effector {
 	void turnRight() {
 		motorRight.backward();
 		motorLeft.forward();
+	}
+	
+	void turnLeft() {
+		motorLeft.backward();
+		motorRight.forward();
 	}
 
 }

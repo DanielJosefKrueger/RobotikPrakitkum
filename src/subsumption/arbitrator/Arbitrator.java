@@ -7,7 +7,7 @@ public class Arbitrator {
 
 	private final int MAX_PRIO = 10;
 
-	private final Wish[] wishes = new Wish[MAX_PRIO];
+	private Wish[] wishes = new Wish[MAX_PRIO];
 	private final Effector[] effectors;
 
 	public Arbitrator(Effector... effectors) {
@@ -31,10 +31,22 @@ public class Arbitrator {
 				}
 			// falls dieser Wunsch die höchste Prio hatte
 			// diesen Wunsch an alle Effektoren weitergeben
-			if (wishHasTopPriority)
-				for (Effector effector : effectors)
+			if (wishHasTopPriority) {
+				if( wish == Wish.Reset ) {
+					 wishes = new Wish[MAX_PRIO];
+				}
+				
+				
+				//wishes[priority] = null;
+				for (Effector effector : effectors) {
 					effector.accept(wish);
+				}
+			}
+				
+			
 		}
 	}
+	
+	
 
 }

@@ -55,12 +55,10 @@ public abstract class Behavior extends Thread {
 			return new Blink(arbitrator, priority);
 		case "BumperHitBackAndTurnRight":
 				return new BumperHitBackAndTurnRight(arbitrator, priority);
-		case "SoftLeftCurve":
-			return new SoftLeftCurve(arbitrator, priority);
-		case "SoftRightCurve":
-			return new SoftRightCurve(arbitrator, priority);
-		case "DriveForward":
-			return new DriveForward(arbitrator, priority);
+		case "WallFollower":
+			return new WallFollower(arbitrator, priority);
+		case "LineFollower":
+			return new LineFollower(arbitrator, priority);
 		case "Killer":
 			return new Killer(arbitrator, priority);
 		default:

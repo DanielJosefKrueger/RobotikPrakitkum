@@ -1,5 +1,5 @@
 package subsumption.common;
 
 public enum Reading {
-	Button, Bumper, SonicWave
+	Button, Bumper, SonicWave, BRIGHTNESS
 }
